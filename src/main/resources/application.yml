@@ -1,0 +1,4 @@
+server:
+  port: 5050
+  servlet:
+    context-path: /design-patterns
