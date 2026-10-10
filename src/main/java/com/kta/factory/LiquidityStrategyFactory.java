@@ -2,14 +2,17 @@ package com.kta.factory;
 
 import com.kta.enums.LiquidityType;
 import com.kta.strategy.LiquidityStrategy;
-import com.kta.strategy.impl.CashAndCreditStrategy;
-import com.kta.strategy.impl.CashOnlyStrategy;
-import com.kta.strategy.impl.CreditOnlyStrategy;
+import com.kta.strategy.impl.CashAndCreditLiquidityStrategy;
+import com.kta.strategy.impl.CashLiquidityStrategy;
+import com.kta.strategy.impl.CreditLiquidityStrategy;
 import com.kta.strategy.impl.FullLiquidityStrategy;
 
 import java.util.EnumMap;
 import java.util.Map;
 
+/**
+ * Simple Factory implementation
+ */
 public class LiquidityStrategyFactory {
 
     private static final Map<LiquidityType, LiquidityStrategy>
@@ -19,15 +22,15 @@ public class LiquidityStrategyFactory {
     static {
         strategies.put(
                 LiquidityType.CASH,
-                new CashOnlyStrategy());
+                new CashLiquidityStrategy());
 
         strategies.put(
                 LiquidityType.CREDIT,
-                new CreditOnlyStrategy());
+                new CreditLiquidityStrategy());
 
         strategies.put(
                 LiquidityType.CASH_AND_CREDIT,
-                new CashAndCreditStrategy());
+                new CashAndCreditLiquidityStrategy());
 
         strategies.put(
                 LiquidityType.CASH_CREDIT_OVERDRAFT,
@@ -40,9 +43,9 @@ public class LiquidityStrategyFactory {
      */
     public static LiquidityStrategy getLiquidityStrategy(String type) {
         return switch (type) {
-            case "CASH" -> new CashOnlyStrategy();
-            case "CREDIT" -> new CreditOnlyStrategy();
-            case "CASH_CREDIT" -> new CashAndCreditStrategy();
+            case "CASH" -> new CashLiquidityStrategy();
+            case "CREDIT" -> new CreditLiquidityStrategy();
+            case "CASH_CREDIT" -> new CashAndCreditLiquidityStrategy();
             case "ALL" -> new FullLiquidityStrategy();
             default -> throw new IllegalArgumentException("Unexpected argument received, no strategy configured for: "+ type);
         };

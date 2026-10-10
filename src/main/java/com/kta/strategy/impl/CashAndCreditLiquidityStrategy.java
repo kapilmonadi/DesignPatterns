@@ -5,11 +5,12 @@ import com.kta.model.LiquidityResult;
 import com.kta.model.LiquiditySnapshot;
 import com.kta.strategy.LiquidityStrategy;
 
-public class CreditOnlyStrategy implements LiquidityStrategy {
+public class CashAndCreditLiquidityStrategy implements LiquidityStrategy {
     @Override
     public LiquidityResult calculate(String customerId) {
         LiquiditySnapshot liquiditySnapshot = DBHelper.getLiquiditySnapshot(customerId);
         return new LiquidityResult(
-                liquiditySnapshot.creditLineBalance(), "CREDIT");
+                liquiditySnapshot.cashBalance().add(liquiditySnapshot.creditLineBalance()),
+                "CASH_AND_CREDIT");
     }
 }

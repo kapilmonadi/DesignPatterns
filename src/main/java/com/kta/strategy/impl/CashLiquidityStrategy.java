@@ -5,7 +5,7 @@ import com.kta.model.LiquidityResult;
 import com.kta.model.LiquiditySnapshot;
 import com.kta.strategy.LiquidityStrategy;
 
-public class CashOnlyStrategy implements LiquidityStrategy {
+public class CashLiquidityStrategy implements LiquidityStrategy {
     @Override
     public LiquidityResult calculate(String customerId) {
         LiquiditySnapshot liquiditySnapshot = DBHelper.getLiquiditySnapshot(customerId);
