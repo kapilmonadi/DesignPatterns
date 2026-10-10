@@ -10,6 +10,6 @@ public class CashOnlyStrategy implements LiquidityStrategy {
     public LiquidityResult calculate(String customerId) {
         LiquiditySnapshot liquiditySnapshot = DBHelper.getLiquiditySnapshot(customerId);
         return new LiquidityResult(
-                liquiditySnapshot.cashBalance(), "CASH_ONLY");
+                liquiditySnapshot.cashBalance(), "CASH");
     }
 }

@@ -10,6 +10,6 @@ public class CreditOnlyStrategy implements LiquidityStrategy {
     public LiquidityResult calculate(String customerId) {
         LiquiditySnapshot liquiditySnapshot = DBHelper.getLiquiditySnapshot(customerId);
         return new LiquidityResult(
-                liquiditySnapshot.creditLineBalance(), "CREDIT_ONLY");
+                liquiditySnapshot.creditLineBalance(), "CREDIT");
     }
 }

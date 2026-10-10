@@ -12,16 +12,17 @@ import java.util.Map;
 
 public class LiquidityStrategyFactory {
 
-    private final Map<LiquidityType, LiquidityStrategy>
+    private static final Map<LiquidityType, LiquidityStrategy>
             strategies = new EnumMap<>(LiquidityType.class);
 
-    public LiquidityStrategyFactory() {
+    // initialize the strategies when the object is getting loaded
+    static {
         strategies.put(
-                LiquidityType.CASH_ONLY,
+                LiquidityType.CASH,
                 new CashOnlyStrategy());
 
         strategies.put(
-                LiquidityType.CREDIT_ONLY,
+                LiquidityType.CREDIT,
                 new CreditOnlyStrategy());
 
         strategies.put(
@@ -35,7 +36,7 @@ public class LiquidityStrategyFactory {
 
 
     /**
-     * Simple Factory implementation
+     * Simple Factory implementation  with new object every time
      */
     public static LiquidityStrategy getLiquidityStrategy(String type) {
         return switch (type) {
@@ -47,7 +48,10 @@ public class LiquidityStrategyFactory {
         };
     }
 
-    public LiquidityStrategy getLiquidityStrategy(LiquidityType type) {
+    /**
+     * Simple Factory implementation  with the same object everytime
+     */
+    public static LiquidityStrategy getLiquidityStrategy(LiquidityType type) {
         LiquidityStrategy strategy = strategies.get(type);
 
         if (strategy == null) {
@@ -56,6 +60,4 @@ public class LiquidityStrategyFactory {
         }
         return strategy;
     }
-
-
 }

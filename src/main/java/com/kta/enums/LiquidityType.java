@@ -6,8 +6,8 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public enum LiquidityType {
-    CASH_ONLY("CASH"),
-    CREDIT_ONLY("CREDIT"),
+    CASH("CASH"),
+    CREDIT("CREDIT"),
     CASH_AND_CREDIT("CASH_CREDIT"),
     CASH_CREDIT_OVERDRAFT("ALL");
 
