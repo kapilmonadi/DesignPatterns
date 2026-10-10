@@ -13,9 +13,9 @@
     <artifactId>design-patterns</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>design-patterns</name>
-    <description>Demo project showcasing SOLID principle VIOLATIONS in an E-Commerce context</description>
+    <description>Design Patterns demonstrated via a Banking Liquidity Management system</description>
     <properties>
-        <java.version>25</java.version>
+        <java.version>21</java.version>
     </properties>
     <dependencies>
         <dependency>
@@ -33,6 +33,11 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.5.0</version>
             </plugin>
         </plugins>
     </build>
